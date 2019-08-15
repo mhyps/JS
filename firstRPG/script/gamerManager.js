@@ -22,7 +22,19 @@ let GameManager = {
         getInterface.innerHTML = `<img src="images/${classType}.jpg" class="img-avatar" alt="${classType}"><div><h3>${classType}</h3><p>Health: ${player.health}</p><p>Mana: ${player.mana}</p><p>Strength: ${player.strength}</p><p>Agility: ${player.agility}</p><p>Speed: ${player.speed}</p></div>`;
     },
     setPreFight: function () {
+        let getHeader = document.querySelector(".header");
+        let getActions = document.querySelector(".actions");
+        let getArena = document.querySelector(".arena");
 
+        getHeader.innerHTML = `<p>Task:Find an enemy!</p>`;
+        getActions.innerHTML = `<a href="#" class="btn-prefight" onclick="GameManager.setFight()">Search for an enemy!</a>`;
+        getArena.style.visibility = "visible";
+    },
+
+    setFight: function () {
+        let getHeader = document.querySelector(".header");
+        let getActions = document.querySelector(".actions");
+        let getArena = document.querySelector(".arena");
     }
 
 };
