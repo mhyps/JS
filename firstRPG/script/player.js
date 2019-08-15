@@ -73,7 +73,33 @@ let PlayerMoves = {
                     getPlayerHealth.innerHTML = `Health: ` + player.health;
                 }
             }
-        }
+        } else if (getPlayerSpeed <= getEnemySpeed) {
+            let enemyAttackValues = enemyAttack();
+            let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
+            player.health -= totalDamage;
+            alert(`Enemy hit ${enemyAttackValues[0]} damage ${enemyAttackValues[1]} times`);
 
+            if (player.health <= 0) {
+                alert(`Enemy won`);
+                getEnemyHealth.innerHTML = `Health: ${enemy.health}`;
+                getPlayerHealth.innerHTML = `Health: 0`;
+            } else {
+                getPlayerHealth.innerHTML = `Health: ${player.health}`;
+                //Player attacks
+                let playerAttackValues = playerAttack();
+                let totalDamage = playerAttackValues[0] * playerAttackValues[1];
+                enemy.health -= totalDamage;
+                alert(`You hit for ${playerAttackValues[0]} damage ${playerAttackValues[1]} times`);
+
+                if (enemy.health <= 0) {
+                    alert(`You won`);
+                    getEnemyHealth.innerHTML = `Health: 0`;
+                    getPlayerHealth.innerHTML = `Health: ${player.health}`;
+                } else {
+                    getEnemyHealth.innerHTML = `Health: ` + enemy.health;
+                }
+            }
+
+        }
     }
 };

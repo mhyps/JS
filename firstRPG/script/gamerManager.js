@@ -37,8 +37,8 @@ let GameManager = {
         let getEnemy = document.querySelector(".enemy");
 
         //Create enemy
-        let witch = new Enemy("Witch", 150, 100, 50, 30, 30);
-        let devil = new Enemy("Devil", 250, 0, 80, 10, 10);
+        let witch = new Enemy("Witch", 150, 100, 50, 30, 300);
+        let devil = new Enemy("Devil", 250, 0, 80, 10, 100);
         let chooseRandomEnemy = Math.floor(Math.random() * Math.floor(2));
 
         switch (chooseRandomEnemy) {
