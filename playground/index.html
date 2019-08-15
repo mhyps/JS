@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Playground</title>
 </head>
 <body>
-
+    <form>
+        Pierwsza liczba: <input type="text" name="firstNumber" id="firstNumber"><br>
+        Druga liczba: <input type="text" name="secondNumber" id="secondNumber"><br>
+        <select id="sign">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="*">*</option>
+        </select>
+        <input type="button" value="Submit" onclick="calc()"><br>
+        <input type="text" id="result" disabled>
+    </form>
 </body>
+<script src="main.js"></script>
 </html>
