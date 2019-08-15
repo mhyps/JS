@@ -34,7 +34,25 @@ let GameManager = {
     setFight: function () {
         let getHeader = document.querySelector(".header");
         let getActions = document.querySelector(".actions");
-        let getArena = document.querySelector(".arena");
+        let getEnemy = document.querySelector(".enemy");
+
+        //Create enemy
+        let witch = new Enemy("Witch", 150, 100, 50, 30, 30);
+        let devil = new Enemy("Devil", 250, 0, 80, 10, 10);
+        let chooseRandomEnemy = Math.floor(Math.random() * Math.floor(2));
+
+        switch (chooseRandomEnemy) {
+            case 0:
+                enemy = witch;
+                break;
+            case 1:
+                enemy = devil;
+                break;
+        }
+        getHeader.innerHTML = `<p>Task: Choose your move</p>`;
+        getActions.innerHTML = `<a href="#" class="btn-prefight" onclick="">Attack!</a>`;
+        getEnemy.innerHTML = `<img src="images/${enemy.classType}.jpg" alt="${enemy.classType}" class="img-avatar"><div><h3>${enemy.classType}</h3><p>Health: ${enemy.health}</p><p>Mana: ${enemy.mana}</p><p>Strength: ${enemy.strength}</p><p>Agility: ${enemy.agility}</p><p>Speed: ${enemy.speed}</p></div>`;
+
     }
 
 };
