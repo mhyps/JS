@@ -18,7 +18,8 @@ let GameManager = {
                 player = new Player("Ranger", 80, 0, 40, 60, 80);
                 break;
         }
-        let getInterface = document.querySelector()
+        let getInterface = document.querySelector(".interface");
+        getInterface.innerHTML = `<img src="images/${classType}.jpg" class="img-avatar" alt="${classType}"><div><h3>${classType}</h3><p>Health: ${player.health}</p><p>Mana: ${player.mana}</p><p>Strength: ${player.strength}</p><p>Agility: ${player.agility}</p><p>Speed: ${player.speed}</p></div>`;
     },
     setPreFight: function () {
 
