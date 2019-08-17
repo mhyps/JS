@@ -9,12 +9,12 @@ let snake = [
 ];
 
 const GAME_SPEED = 100;
-const CANVAS_BORDER_COLOUR = 'black';
-const CANVAS_BACKGROUND_COLOUR = "white";
+const CANVAS_BORDER_COLOUR = '#000';
+const CANVAS_BACKGROUND_COLOUR = "#FFF";
 const SNAKE_COLOUR = "#a993c2";
 const SNAKE_BORDER_COLOUR = "#6832a8";
-const FOOD_COLOUR = 'red';
-const FOOD_BORDER_COLOUR = 'darkred';
+const FOOD_COLOUR = "#4287f5";
+const FOOD_BORDER_COLOUR = '#112b54';
 
 let dx = 10;
 let dy = 0;
@@ -23,14 +23,14 @@ let foodY;
 let score = 0;
 let changingDirection = false;
 
-createFood();
 main();
-
+createFood();
 document.addEventListener("keydown", changeDirection);
 
 function main() {
     if (didGameEnd()) return;
     setTimeout(function onTick() {
+        changingDirection = false;
         clearCanvas();
         drawFood();
         advanceSnake();
@@ -60,6 +60,9 @@ function changeDirection(event) {
     const RIGHT_KEY = "ArrowRight";
     const UP_KEY = "ArrowUp";
     const DOWN_KEY = "ArrowDown";
+
+    if (changingDirection) return;
+    changingDirection = true;
 
     const keyPressed = event.key;
     const goingUp = dy === -10;
