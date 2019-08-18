@@ -17,12 +17,11 @@ function flipcard() {
 
         return;
     }
+
     //getting second card
     secondCard = this;
-
     // do cards match
     checkForMatch();
-
 }
 
 function checkForMatch() {
@@ -32,8 +31,8 @@ function checkForMatch() {
 }
 
 function disableCards() {
-    firstCard.removeEventListener('click', flipcard());
-    secondCard.removeEventListener('click', flipcard());
+    firstCard.removeEventListener('click', flipcard);
+    secondCard.removeEventListener('click', flipcard);
 
     resetBoard();
 }
@@ -57,9 +56,9 @@ function resetBoard() {
 //IIFE
 (function shuffle(){
     cards.forEach(card =>{
-        let random = Math.floor(Math.random() * 12);
-        card.style.order = random;
-    })
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    });
 })();
 
 cards.forEach(card => card.addEventListener("click", flipcard));
