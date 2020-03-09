@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch</title>
+  </head>
+  <body>
+    <button id="getText">Get Text</button>
+    <button id="getUsers">Get Users</button>
+    <div id="data"></div>
+    <script>
+      document.querySelector('#getText').addEventListener('click', getText);
+      document.querySelector('#getUsers').addEventListener('click', getUsers);
+
+      function getText() {
+        fetch('sample.txt')
+          .then(res => res.text())
+          .then(data =>
+            document
+              .querySelector('#data')
+              .appendChild(document.createTextNode(data))
+          );
+      }
+
+      function getUsers() {
+        fetch('users.json')
+          .then(res => res.json())
+          .then(data => {
+            data.forEach(obj => {
+              let datDiv = document
+                .querySelector('#data')
+                .appendChild(
+                  document.createTextNode(
+                    `Id: ${obj.id}, name: ${obj.name}, last name: ${obj.lastName}`
+                  )
+                );
+            });
+          });
+      }
+
+      //Przyklad
+      // fetch(/*plik/link*/,{
+      //     method: 'Post',
+      //     headers:{
+      //         'Accept': 'application/json, text/plain, */*',
+      //         'Content-type' : 'application/json'
+      //     },
+      //     body:JSON.stringify({/*variables eg. text:text*/})
+      // }).then(res => res.json()).then(data => console.log(data))
+    </script>
+  </body>
+</html>
