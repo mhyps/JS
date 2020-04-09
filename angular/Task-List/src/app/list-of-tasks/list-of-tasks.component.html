@@ -1,0 +1,7 @@
+<ul class="task-list">
+  <li *ngFor="let item of listOfTasks; let i = index">
+    <span class="large">Zadanie: {{ item.name }}</span>
+    <p class="small">Dodano:{{ item.date | date: "medium" }}</p>
+    <button (click)="deleteTask(i)" class="btn-danger mb-3">Usuń</button>
+  </li>
+</ul>

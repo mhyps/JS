@@ -1,0 +1,19 @@
+<div class="row">
+  <h1 class="col-6">Dodaj swoje zadanie:</h1>
+  <!-- <input type="text" -->
+  <!-- #addTaskInput -->
+  <!-- (keyup.enter)="addToList(addTaskInput.value)" -->
+  <!-- /> -->
+  <div class="col-6 text-center">
+    <input
+      type="text"
+      class="form-control"
+      (keyup.enter)="addToList()"
+      [(ngModel)]="taskInput"
+    />
+    <button (click)="addToList()" class="pr-2 pl-2 mt-2 btn-default">
+      Dodaj
+    </button>
+  </div>
+</div>
+<app-list-of-tasks></app-list-of-tasks>

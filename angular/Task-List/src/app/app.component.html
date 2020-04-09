@@ -1,0 +1,13 @@
+<div class="container p-3 my-3 bg-dark text-white">
+  <header>
+    <app-add-tasks-header
+      (found)="handleResults($event)"
+    ></app-add-tasks-header>
+  </header>
+  <main>
+    <div class="listOfTasks">
+      <app-list-of-tasks [listOfTasks]="data"></app-list-of-tasks>
+    </div>
+  </main>
+  <router-outlet></router-outlet>
+</div>
