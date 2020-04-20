@@ -1,0 +1,24 @@
+<h5>Edit your server</h5>
+<hr />
+<form>
+  <div class="form-group">
+    <label for="id"
+      >ID: <input type="text" [value]="serverId" disabled
+    /></label>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      [(ngModel)]="serverName"
+      name="serverName"
+      placeholder="Server name"
+    />
+  </div>
+  <div class="form-group">
+    <select class="form-control" [(ngModel)]="serverStatus" name="serverStatus">
+      <option>online</option>
+      <option>offline</option>
+    </select>
+  </div>
+</form>
+<button (click)="updateServer()" class="btn btn-success">Update</button>
