@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, Data } from '@angular/router';
 
 @Component({
   selector: 'app-editserver',
@@ -17,8 +17,12 @@ export class EditserverComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activeRoute.params.subscribe((params: Params) => {
-      this.server = this.serverService.getServer(+params['id']);
+    // this.activeRoute.params.subscribe((params: Params) => {
+    //   this.server = this.serverService.getServer(+params['id']);
+    // });
+
+    this.activeRoute.data.subscribe((data: Data) => {
+      this.server = data['server'];
     });
   }
 

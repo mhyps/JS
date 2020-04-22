@@ -8,6 +8,7 @@ import { ServerComponent } from './servers/server/server.component';
 import { EditserverComponent } from './servers/editserver/editserver.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserComponent } from './users/user/user.component';
+import { ServerResolverService } from './servers/editserver/server-resolver.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,11 @@ const routes: Routes = [
     component: ServersComponent,
     children: [
       { path: ':id', component: ServerComponent },
-      { path: ':id/edit', component: EditserverComponent },
+      {
+        path: ':id/edit',
+        component: EditserverComponent,
+        resolve: { server: ServerResolverService },
+      },
     ],
   },
   {
