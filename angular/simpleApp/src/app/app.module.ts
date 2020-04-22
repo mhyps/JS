@@ -10,6 +10,8 @@ import { ServerComponent } from './servers/server/server.component';
 import { EditserverComponent } from './servers/editserver/editserver.component';
 
 import { FormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserComponent } from './users/user/user.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     ServerComponent,
     EditserverComponent,
+    PageNotFoundComponent,
+    UserComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

@@ -1,1 +1,24 @@
-<p>users works!</p>
+<div>
+  <div class="row">
+    <div class="col-xs-12 col-xl-6">
+      <div class="list-group user-display">
+        <a
+          *ngFor="let user of users; let i = index"
+          class="list-group-item"
+          [routerLink]="[user.id]"
+          [queryParams]="{ allowEdit: user.role === 'admin' ? true : false }"
+        >
+          <strong>{{ user.id }}</strong> | {{ user.name }} {{ user.lastName }}
+          <span
+            style="float: right;"
+            [ngStyle]="{ color: user.role === 'admin' ? 'green' : 'red' }"
+            >{{ user.role }}</span
+          >
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-xl-6">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

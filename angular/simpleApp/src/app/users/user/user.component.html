@@ -1,0 +1,4 @@
+<ng-container *ngIf="!allowEdit; else allowed">
+  <h2>You're not allowed</h2>
+</ng-container>
+<ng-template #allowed> You are allowed</ng-template>

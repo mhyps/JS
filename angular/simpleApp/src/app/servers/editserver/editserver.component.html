@@ -3,22 +3,33 @@
 <form>
   <div class="form-group">
     <label for="id"
-      >ID: <input type="text" [value]="serverId" disabled
+      >ID: <input type="text" [value]="server.id" disabled
     /></label>
   </div>
   <div class="form-group">
     <input
       type="text"
-      [(ngModel)]="serverName"
+      #serveName
       name="serverName"
+      [value]="server.name"
       placeholder="Server name"
     />
   </div>
   <div class="form-group">
-    <select class="form-control" [(ngModel)]="serverStatus" name="serverStatus">
+    <select
+      class="form-control"
+      #serverStatus
+      [value]="server.status"
+      name="serverStatus"
+    >
       <option>online</option>
       <option>offline</option>
     </select>
   </div>
 </form>
-<button (click)="updateServer()" class="btn btn-success">Update</button>
+<button
+  (click)="updateServer(serveName.value, serverStatus.value)"
+  class="btn btn-success"
+>
+  Update
+</button>
