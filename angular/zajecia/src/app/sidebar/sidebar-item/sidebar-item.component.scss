@@ -1,0 +1,20 @@
+:host {
+  width: 100%;
+  height: 50px;
+  display: block;
+  float: left;
+}
+
+.sidebar-item-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sidebar-item-container:hover {
+  background-color: #fc2355;
+  color: #e3e4e5;
+}
