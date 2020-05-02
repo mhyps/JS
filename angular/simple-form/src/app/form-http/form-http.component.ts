@@ -1,36 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
+import { Post } from './Post.model';
+import { PostsService } from './posts.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-form-http',
   templateUrl: './form-http.component.html',
   styleUrls: ['./form-http.component.scss'],
 })
-export class FormHttpComponent implements OnInit {
-  loadedPosts = [];
+export class FormHttpComponent implements OnInit, OnDestroy {
+  loadedPosts: Post[] = [];
+  error = null;
+  private errorSub: Subscription;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private postService: PostsService) {}
 
-  ngOnInit() {
-    this.fetchData();
+  ngOnInit(): void {
+    this.errorSub = this.postService.error.subscribe((errorMsg) => {
+      this.error = errorMsg;
+    });
   }
 
-  onCreatePost(postData: { title: string; content: string }) {
-    this.http
-      .post('https://simple-app-ca3bb.firebaseio.com/posts.json', postData)
-      .subscribe((responseData) => {
-        console.log(responseData);
-      });
+  ngOnDestroy(): void {
+    this.errorSub.unsubscribe();
   }
 
-  onFetchPosts() {
-    // Send Http request
+  onCreatePost(postData: Post): void {
+    this.postService.createPost(postData.title, postData.content);
   }
 
-  onClearPosts() {
-    // Send Http request
+  onFetchPosts(): void {
+    this.postService.fetchPosts().subscribe(
+      (posts) => {
+        this.loadedPosts = posts;
+      },
+      (error) => {
+        this.error = error.message;
+        console.log(error);
+      }
+    );
   }
 
-  private fetchData() {}
+  onClearPosts(): void {
+    this.postService.deletePosts().subscribe(
+      (posts) => {
+        console.log('posts deleted');
+        this.loadedPosts = [];
+      },
+      (error) => {
+        this.error = error.message;
+        console.log(error);
+      }
+    );
+  }
 }
