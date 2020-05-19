@@ -1,9 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Recipe } from '../recipe.model';
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import { ShoppingListService } from 'src/app/shared/shopping-list.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from 'src/app/shared/recipe.service';
 
 @Component({
@@ -17,6 +16,7 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private recipeSerive: RecipeService
   ) {}
 
@@ -27,7 +27,11 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
-  sendIngr(ingr: Ingredient[]) {
+  sendIngr(ingr: Ingredient[]): void {
     this.recipeSerive.addIngredientsToSL(ingr);
+  }
+
+  onEditRecipe(): void {
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 }
