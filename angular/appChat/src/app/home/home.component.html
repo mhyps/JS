@@ -1,0 +1,42 @@
+<div class="homeForm">
+  <nb-card>
+    <nb-card-header>
+      <h3>Join:</h3>
+    </nb-card-header>
+    <nb-card-body>
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <label for="Name" style="margin-right: 1rem;">Display Name:</label>
+        <input
+          type="text"
+          name="displayName"
+          #displayName="ngModel"
+          ngModel
+          required
+          nbInput
+          shape="semi-round"
+        />
+
+        <button
+          type="submit"
+          nbButton
+          size="small"
+          style="margin-left: 0.5rem;"
+          [disabled]="!form.valid"
+        >
+          <nb-icon icon="arrow-circle-right-outline"></nb-icon>
+        </button>
+
+        <div
+          class="error"
+          *ngIf="
+            displayName.invalid && (displayName.dirty || displayName.touched)
+          "
+        >
+          <div *ngIf="displayName.errors.required">
+            Name is required!
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+</div>
