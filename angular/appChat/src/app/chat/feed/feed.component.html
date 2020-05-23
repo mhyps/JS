@@ -1,0 +1,16 @@
+<div class="container">
+  <nb-chat [title]="title">
+    <nb-chat-message
+      *ngFor="let msg of chat"
+      [type]="msg.type"
+      [message]="msg.text"
+      [reply]="msg.reply"
+      [sender]="msg.user.name"
+      [date]="msg.date | date: 'medium'"
+      [files]="msg.files"
+      [avatar]="msg.user.avatar"
+    >
+    </nb-chat-message>
+    <nb-chat-form (send)="sendMessage(chat, $event)"></nb-chat-form>
+  </nb-chat>
+</div>

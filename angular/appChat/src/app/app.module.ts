@@ -10,6 +10,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HeaderModule } from './header/header.module';
 import { SignupModule } from './signup/signup.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ChatModule } from './chat/chat.module';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -17,12 +18,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    HeaderModule,
+    SignupModule,
+    ChatModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
     NbEvaIconsModule,
-    HeaderModule,
-    SignupModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
