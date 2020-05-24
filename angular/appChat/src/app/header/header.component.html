@@ -1,11 +1,9 @@
 <div class="header">
-  <h2>ChatApp</h2>
+  <h2><a routerLink="/">ChatApp</a></h2>
   <div class="header-links">
-    <app-header-link>
-      <a [routerLink]="['home']" routerLinkActive="active">Login</a>
-    </app-header-link>
-    <app-header-link
-      ><a [routerLink]="['sign-up']" routerLinkActive="active">Sign Up</a>
-    </app-header-link>
+    <ul>
+      <li><a routerLinkActive="active" routerLink="/home">Login</a></li>
+      <li><a routerLinkActive="active" routerLink="/sign-up">Sign up</a></li>
+    </ul>
   </div>
 </div>

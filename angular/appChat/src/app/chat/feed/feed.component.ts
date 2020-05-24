@@ -19,10 +19,9 @@ export class FeedComponent implements OnInit {
     this.numberOfOnlineUsers = this.userService.getSize();
     this.title = 'Number of online users: ' + this.numberOfOnlineUsers;
     this.loggedUser = this.userService.getUser(this.numberOfOnlineUsers - 1);
-    console.log(this.loggedUser.name);
   }
 
-  sendMessage(chat, event) {
+  sendMessage(chat, event): void {
     chat.push({
       text: event.message,
       date: new Date(),

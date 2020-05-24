@@ -12,12 +12,31 @@
   align-items: center;
 
   a {
-    font-size: 1.2rem;
     text-decoration: none;
-    padding: 1.5rem;
+  }
 
-    &:hover {
-      background-color: #598bff;
+  .header-links {
+    .active {
+      background-color: #769efc;
+      border-radius: 10px;
+    }
+
+    ul {
+      li {
+        display: inline;
+        margin: 0 10px 5px 0;
+
+        a {
+          font-size: 1.2rem;
+          text-decoration: none;
+          padding: 1.2rem;
+
+          &:hover {
+            background-color: #598bff;
+            border-radius: 10px;
+          }
+        }
+      }
     }
   }
 }
